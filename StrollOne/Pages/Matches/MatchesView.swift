@@ -25,6 +25,7 @@ extension MatchesView {
         VStack {
             TitleView()
             CarouselView()
+            ChatView()
         }
     }
 }
