@@ -12,24 +12,24 @@ struct CarouselView: View {
     @StateObject var vm: CarouselViewModel = .init()
     
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(vm.recentMoves, id: \.id) {card in
-                        makeCard(card, with: geometry)
-                    }
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(vm.recentMoves, id: \.id) { card in
+                    makeCard(card)
                 }
             }
-            .scrollIndicators(.hidden)
-            .fixedSize()
-            .padding()
         }
+        .scrollIndicators(.hidden)
+//        .fixedSize()
+        .padding()
+        .frame(height: UIScreen.main.bounds.height * 0.30)
     }
 }
 
 extension CarouselView {
     @ViewBuilder
-    func makeCard(_ card: YourTurnCard, with geometry: GeometryProxy) -> some View {
+    func makeCard(_ card: YourTurnCard) -> some View {
+        let screen = UIScreen.main.bounds
         ZStack {
             Image(card.image)
                 .resizable(resizingMode: .stretch)
@@ -52,10 +52,11 @@ extension CarouselView {
                     .foregroundStyle(Color("YourTurnCardCaption"))
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
+                    .padding(.top, 1)
             }
             .padding()
         }
-        .frame(width: geometry.size.width * 0.386666667, height: geometry.size.height * 0.299291153)
+        .frame(width: screen.width * 0.3866667, height: screen.height * 0.25184275)
         .clipShape(RoundedRectangle(cornerRadius: 21))
         .padding(.horizontal, 6)
     }
