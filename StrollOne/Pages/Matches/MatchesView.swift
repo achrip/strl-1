@@ -13,8 +13,7 @@ struct MatchesView: View {
     var body: some View {
         ZStack {
             Image("starry-night")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
+                .resizable(resizingMode: .stretch)
             Content()
         }
     }
@@ -24,7 +23,7 @@ extension MatchesView {
     @ViewBuilder
     func Content() -> some View {
         VStack {
-           Text("Hello, Matches? 👋")
+            TitleView()
         }
     }
 }

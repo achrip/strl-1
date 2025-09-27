@@ -13,8 +13,6 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4AF34B482E88183A006119E6 /* StrollOne */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = StrollOne;
 			sourceTree = "<group>";
 		};
@@ -46,7 +44,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Cards;
 			path = Cards;
 			sourceTree = "<group>";
 		};
@@ -74,7 +71,6 @@
 				4038A4F9EB451335CCD85286 /* Cards */,
 				707046078C0898FB38120E2D /* Chat */,
 			);
-			name = Matches;
 			path = Matches;
 			sourceTree = "<group>";
 		};
@@ -89,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Title;
 			path = Title;
 			sourceTree = "<group>";
 		};
@@ -97,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Chat;
 			path = Chat;
 			sourceTree = "<group>";
 		};
@@ -360,7 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = Primary;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KNG572S59L;
@@ -390,7 +384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = Primary;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KNG572S59L;
