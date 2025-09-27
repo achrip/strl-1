@@ -24,6 +24,7 @@ extension MatchesView {
     func Content() -> some View {
         VStack {
             TitleView()
+            CarouselView()
         }
     }
 }
