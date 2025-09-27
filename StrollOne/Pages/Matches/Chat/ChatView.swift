@@ -85,7 +85,7 @@ extension ChatView {
                 
                 if !chat.preview.isEmpty {
                     Text(chat.preview)
-                        .font(.headline)
+                        .font(.subheadline)
                         .fontWeight(chat.status != .yourTurn ? .regular : .semibold)
                         .foregroundStyle(chat.status != .yourTurn ? Color("ReadPreviewText") : Color("UnreadPreviewText"))
                         .lineLimit(2)
@@ -93,8 +93,11 @@ extension ChatView {
                 } else {
                     HStack(spacing: 6) {
                         Image(systemName: "mic.fill")
+                            .foregroundStyle(Color("Voice"))
                         Image(systemName: "waveform")
+                            .foregroundStyle(Color("Voice"))
                         Text("00:58")
+                            .foregroundStyle(Color("Voice"))
                     }
                     .font(.headline)
                     .foregroundStyle(Color("ReadPreviewText"))
@@ -114,7 +117,10 @@ extension ChatView {
                 } else if chat.unreadMessagesCount > 0 {
                     makeChatNotificationBadge(with: chat.unreadMessagesCount)
                 }
+                
+                Spacer()
             }
+            .padding(.top, 19)
         }
     }
     

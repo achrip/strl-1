@@ -21,7 +21,7 @@ struct CarouselView: View {
         }
         .scrollIndicators(.hidden)
 //        .fixedSize()
-        .padding()
+        .padding(.horizontal)
         .frame(height: UIScreen.main.bounds.height * 0.30)
     }
 }
