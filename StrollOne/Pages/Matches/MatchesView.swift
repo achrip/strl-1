@@ -14,6 +14,16 @@ struct MatchesView: View {
         ZStack {
             Image("starry-night")
                 .resizable(resizingMode: .stretch)
+            
+            LinearGradient(
+                gradient: Gradient(stops: [
+                    .init(color: .clear, location: 0.25),
+                    .init(color: .black, location: 1.0)
+                ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            
             Content()
         }
     }
