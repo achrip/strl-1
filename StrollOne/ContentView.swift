@@ -12,16 +12,21 @@ struct ContentView: View {
         TabView {
             CardsView()
                 .tabItem {
-                    Label("Cards", systemImage: "simcard.2")
+                    Label("Cards", image: "Cards")
                 }
+                .badge(10)
             BonfireView()
                 .tabItem {
-                    Label("Bonfire", systemImage: "flame")
+                    Label("Bonfire", image: "Bonfire")
                 }
             MatchesView()
                 .tabItem {
-                    Label("Matches", systemImage: "bubble.left.and.bubble.right.fill")
+                    Label("Matches", image: "Matches")
                 }
+                .toolbarBackground(.visible, for: .tabBar)
+                .toolbarBackground(
+                    Color("TabBarBackground"), for: .tabBar
+                )
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person.circle")
