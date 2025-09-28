@@ -22,7 +22,7 @@ struct MatchesView: View {
 extension MatchesView {
     @ViewBuilder
     func Content() -> some View {
-        VStack {
+        VStack(spacing: 0) {
             TitleView()
             CarouselView()
             ChatView()

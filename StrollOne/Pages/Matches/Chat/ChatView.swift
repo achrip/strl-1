@@ -17,8 +17,11 @@ struct ChatView: View {
             makeHeader()
             List(vm.chats) { chat in
                 makeListItem(chat)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             }
             .listStyle(.plain)
+            .environment(\.defaultMinListRowHeight, 0)
+            .padding(.horizontal, 4)
         }
     }
 }
@@ -65,14 +68,14 @@ extension ChatView {
     
     @ViewBuilder
     func makeListItem(_ chat: Chat) -> some View {
-        HStack {
+        HStack(alignment: .top) {
             Image(chat.sender.name)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 66, height: 66)
                 .clipShape(Circle())
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 2) {
                 HStack {
                     Text(chat.sender.name)
                         .font(.proximaNova(forTextStyle: .headline, weight: .bold))
@@ -95,8 +98,9 @@ extension ChatView {
                         Text("00:58")
                             .foregroundStyle(Color("Voice"))
                     }
-                    .font(.headline)
+                    .font(.proximaNova(forTextStyle: .headline, weight: .bold))
                     .foregroundStyle(Color("ReadPreviewText"))
+                    .offset(y: 5)
                 }
             }
             .padding(.horizontal, 10)
@@ -116,8 +120,8 @@ extension ChatView {
                 
                 Spacer()
             }
-            .padding(.top, 19)
         }
+        .padding(.vertical, 4)
     }
     
     @ViewBuilder

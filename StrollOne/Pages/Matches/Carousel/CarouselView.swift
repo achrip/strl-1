@@ -21,9 +21,9 @@ struct CarouselView: View {
             }
         }
         .scrollIndicators(.hidden)
-//        .fixedSize()
+        .frame(height: UIScreen.main.bounds.height * 0.26)
         .padding(.horizontal)
-        .frame(height: UIScreen.main.bounds.height * 0.30)
+        .padding(.bottom, 3)
     }
 }
 
