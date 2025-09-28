@@ -14,12 +14,10 @@ struct TitleView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text("Your Turn")
-                        .font(.title2)
-                        .fontWeight(.bold)
+                        .font(.proximaNova(forTextStyle: .title2, weight: .bold))
                     
                     Text("7")
-                        .font(.caption2)
-                        .fontWeight(.bold)
+                        .font(.proximaNova(forTextStyle: .caption1, weight: .bold))
                         .frame(width: 16, height: 16)
                         .foregroundStyle(Color.black)
                         .background(Color("Primary"))
@@ -27,7 +25,7 @@ struct TitleView: View {
                         .padding(.leading, 5)
                 }
                 Text("Make your move, they are waiting 🎵")
-                    .font(.caption)
+                    .font(.proximaNova(forTextStyle: .footnote, weight: .thin))
                     .foregroundStyle(Color("Secondary"))
                     .fontWeight(.light)
                     .italic()
@@ -60,8 +58,7 @@ extension TitleView {
                 .frame(width: 42, height: 18.4)
                 .overlay(
                     Text("90")
-                        .font(.caption)
-                        .fontWeight(.bold)
+                        .font(UIFont.proximaNova(forTextStyle: .caption1, weight: .bold).withSize(10.8).toFont())
                         .foregroundColor(.white)
                 )
                 .offset(y: 10)
