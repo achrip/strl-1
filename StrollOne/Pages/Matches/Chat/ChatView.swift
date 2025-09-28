@@ -129,11 +129,12 @@ extension ChatView {
                         Image("Aurora")
                             .resizable()
                             .scaledToFill()
-                            .frame(width: proxy.size.width, height: proxy.size.height, alignment: .top)
+                            .frame(height: proxy.size.height / 2, alignment: .top)
                             .clipped()
                     }
                 }
-            }
+            },
+            alignment: .bottom
         )
     }
     
