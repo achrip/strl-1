@@ -125,13 +125,16 @@ extension ChatView {
         .background(
             Group {
                 if chat.preview.isEmpty {
-                    Image("Aurora")
-                        .resizable()
-                        .scaledToFill()
+                    GeometryReader { proxy in
+                        Image("Aurora")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: proxy.size.width, height: proxy.size.height, alignment: .top)
+                            .clipped()
+                    }
                 }
             }
         )
-        .clipped()
     }
     
     @ViewBuilder
