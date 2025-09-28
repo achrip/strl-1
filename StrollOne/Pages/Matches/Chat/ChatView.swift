@@ -122,6 +122,16 @@ extension ChatView {
             }
         }
         .padding(.vertical, 4)
+        .background(
+            Group {
+                if chat.preview.isEmpty {
+                    Image("Aurora")
+                        .resizable()
+                        .scaledToFill()
+                }
+            }
+        )
+        .clipped()
     }
     
     @ViewBuilder
