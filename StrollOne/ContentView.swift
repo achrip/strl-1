@@ -68,19 +68,33 @@ extension ContentView {
 fileprivate extension UIImage {
     
     func createTabItemLabelFromImage() -> UIImage? {
+        let outlineColor = UIColor.gray.cgColor
+        let outlineDistance: CGFloat = 2.0
         let imageSize = CGSize(width: 25, height: 25)
+        let profileImageSize = CGSize(width: imageSize.width - (outlineDistance * 2), height: imageSize.height - (outlineDistance * 2))
         
         return UIGraphicsImageRenderer(size: imageSize).image { context in
-            let rect = CGRect(origin: .init(x: 0, y: 0), size: imageSize)
-            let clipPath = UIBezierPath(ovalIn: rect)
+            // Calculate the centered rect for the smaller profile image
+            let profileRect = CGRect(
+                x: outlineDistance,
+                y: outlineDistance,
+                width: profileImageSize.width,
+                height: profileImageSize.height
+            )
+            
+            // Clip and draw the profile image (smaller and centered)
+            let clipPath = UIBezierPath(ovalIn: profileRect)
             clipPath.addClip()
+            self.draw(in: profileRect)
             
-            self.draw(in: rect)
-            
+            // Reset clipping to draw the outline image on top
             context.cgContext.resetClip()
             
+            // Draw the outline image with color tinting
             if let outlineImage = UIImage(named: "DrawnCircle") {
-                outlineImage.draw(in: rect)
+                // Draw the outline image
+                let outlineRect = CGRect(origin: .zero, size: imageSize)
+                outlineImage.draw(in: outlineRect)
             }
         }
         .withRenderingMode(.alwaysOriginal)

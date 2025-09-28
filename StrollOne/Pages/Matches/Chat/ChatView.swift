@@ -24,7 +24,7 @@ struct ChatView: View {
             .scrollContentBackground(.hidden)
             .background(.clear)
             .environment(\.defaultMinListRowHeight, 0)
-            .padding(.horizontal)
+            .padding(.horizontal, 6)
         }
     }
 }
@@ -71,11 +71,12 @@ extension ChatView {
     
     @ViewBuilder
     func makeListItem(_ chat: Chat) -> some View {
+        let screen = UIScreen.main.bounds
         HStack(alignment: .top) {
             Image(chat.sender.name)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 66, height: 66)
+                .frame(width: screen.width * 0.137, height: screen.height * 0.064)
                 .clipShape(Circle())
             
             VStack(alignment: .leading, spacing: 2) {
@@ -135,12 +136,14 @@ extension ChatView {
                             .frame(width: proxy.size.width, height: proxy.size.height, alignment: .top)
                             .clipped()
                             .opacity(0.3)
+                            .blur(radius: 10)
                             .mask(
                                 LinearGradient(
                                     gradient: Gradient(stops: [
                                         .init(color: .clear, location: 0.0),
                                         .init(color: .clear, location: 0.56),
-                                        .init(color: .black.opacity(0.3), location: 0.6)
+                                        .init(color: .black.opacity(0.3), location: 0.6),
+                                        .init(color: .black, location: 1.0),
                                     ]),
                                     startPoint: .top,
                                     endPoint: .bottom
