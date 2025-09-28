@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    let screen = UIScreen.main.bounds
     var body: some View {
         TabView {
             CardsView()
@@ -31,6 +32,12 @@ struct ContentView: View {
                 .tabItem {
                     Label("Profile", systemImage: "person.circle")
                 }
+        }
+        .overlay(alignment: .bottom) {
+            LinearGradient(gradient: Gradient(colors: [.clear, Color("TabBarBackground")]), startPoint: .top, endPoint: .bottom)
+                .frame(height: screen.height * 0.05)
+                .offset(y: -49)
+                .ignoresSafeArea(.keyboard, edges: .bottom)
         }
     }
 }
