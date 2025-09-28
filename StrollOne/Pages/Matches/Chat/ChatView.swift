@@ -131,6 +131,19 @@ extension ChatView {
                             .scaledToFill()
                             .frame(width: proxy.size.width, height: proxy.size.height, alignment: .top)
                             .clipped()
+                            .opacity(0.15)
+                            .mask(
+                                LinearGradient(
+                                    gradient: Gradient(stops: [
+                                        .init(color: .clear, location: 0.0),
+                                        .init(color: .clear, location: 0.56),
+                                        .init(color: .black.opacity(0.1), location: 0.6),
+                                        .init(color: .black, location: 1.0)
+                                    ]),
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
                     }
                 }
             }
