@@ -32,8 +32,7 @@ extension ChatView {
                     vm.activeTab = .chats
                 } label: {
                     Text("Chats")
-                        .font(.title3)
-                        .fontWeight(.bold)
+                        .font(.proximaNova(forTextStyle: .title2, weight: .bold))
                         .overlay(
                             Rectangle()
                                 .frame(height: 2)
@@ -48,8 +47,7 @@ extension ChatView {
                     vm.activeTab = .pending
                 } label: {
                     Text("Pending")
-                        .font(.title3)
-                        .fontWeight(.bold)
+                        .font(.proximaNova(forTextStyle: .title2, weight: .bold))
                         .foregroundStyle(.gray)
                 }
                 .buttonStyle(.plain)
@@ -57,7 +55,7 @@ extension ChatView {
             .padding(.bottom, 10)
             
             Text("The ice is broken. Time to hit it off")
-                .font(.caption)
+                .font(.proximaNova(forTextStyle: .footnote, weight: .thin))
                 .foregroundStyle(Color("Secondary"))
                 .fontWeight(.light)
                 .italic()
@@ -77,16 +75,14 @@ extension ChatView {
             VStack(alignment: .leading) {
                 HStack {
                     Text(chat.sender.name)
-                        .font(.body)
-                        .fontWeight(.bold)
+                        .font(.proximaNova(forTextStyle: .headline, weight: .bold))
                     
                     makeChatTag(chat.status)
                 }
                 
                 if !chat.preview.isEmpty {
                     Text(chat.preview)
-                        .font(.subheadline)
-                        .fontWeight(chat.status != .yourTurn ? .regular : .semibold)
+                        .font(.proximaNova(forTextStyle: .subheadline, weight: chat.status != .yourTurn ? .regular : .semibold))
                         .foregroundStyle(chat.status != .yourTurn ? Color("ReadPreviewText") : Color("UnreadPreviewText"))
                         .lineLimit(2)
                         .truncationMode(.tail)
@@ -109,7 +105,7 @@ extension ChatView {
             
             VStack(alignment: .trailing) {
                 Text(chat.time)
-                    .font(.caption)
+                    .font(.proximaNova(forTextStyle: .footnote, weight: .semibold))
                     .foregroundStyle(chat.status == .none ? Color("ReadText") : Color("UnreadText"))
                 
                 if chat.isStarred {
@@ -131,8 +127,8 @@ extension ChatView {
                 .frame(width: 20, height: 14)
                 .foregroundStyle(Color("ChatNotification"))
             
-            Image(systemName: "star.fill")
-                .font(.custom("Poppins-Medium", size: 10))
+            Text("★")
+                .font(.proximaNova(forTextStyle: .caption1, weight: .bold))
                 .foregroundStyle(Color.black)
         }
     }
@@ -144,32 +140,30 @@ extension ChatView {
                 .foregroundStyle(Color("ChatNotification"))
             
             Text("\(count)")
-                .font(.custom("Poppins-Medium", size: 10))
-                .fontWeight(.bold)
+                .font(.proximaNova(forTextStyle: .caption1, weight: .bold))
                 .foregroundStyle(Color.black)
         }
     }
     
     @ViewBuilder
     func makeChatTag(_ tag: ChatTag) -> some View {
+        let font = UIFont.proximaNova(forTextStyle: .caption1, weight: .semibold)
         if tag != .none {
-            HStack {
+            HStack(spacing: 6) {
                 if tag == .newChat {
                     Circle()
-                        .frame(width: 8, height: 8)
+                        .frame(width: font.pointSize * 0.5, height: font.pointSize * 0.5)
                         .foregroundStyle(Color("ChatTagText"))
                         .padding(.leading, 8)
                     
                     Text(tag.description)
-                        .font(.caption2)
-                        .fontWeight(.bold)
+                        .font(.proximaNova(forTextStyle: .caption1, weight: .semibold))
                         .foregroundStyle(Color("ChatTagText"))
                         .padding(.vertical, 2)
                         .padding(.trailing, 8)
                 } else {
                     Text(tag.description)
-                        .font(.caption2)
-                        .fontWeight(.bold)
+                        .font(.proximaNova(forTextStyle: .caption1, weight: .semibold))
                         .foregroundStyle(Color("ChatTagText"))
                         .padding(.vertical, 2)
                         .padding(.horizontal, 8)
