@@ -12,13 +12,13 @@ struct MatchesView: View {
     
     var body: some View {
         ZStack {
-            Image("starry-night")
+            Image("BonfireBG")
                 .resizable(resizingMode: .stretch)
             
             LinearGradient(
                 gradient: Gradient(stops: [
-                    .init(color: .clear, location: 0.25),
-                    .init(color: .black, location: 1.0)
+                    .init(color: .clear, location: 0.1),
+                    .init(color: Color("Background"), location: 0.3)
                 ]),
                 startPoint: .top,
                 endPoint: .bottom

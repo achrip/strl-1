@@ -18,10 +18,13 @@ struct ChatView: View {
             List(vm.chats) { chat in
                 makeListItem(chat)
                     .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                    .listRowBackground(Color.clear)
             }
             .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+            .background(.clear)
             .environment(\.defaultMinListRowHeight, 0)
-            .padding(.horizontal, 4)
+            .padding(.horizontal)
         }
     }
 }
@@ -131,14 +134,13 @@ extension ChatView {
                             .scaledToFill()
                             .frame(width: proxy.size.width, height: proxy.size.height, alignment: .top)
                             .clipped()
-                            .opacity(0.15)
+                            .opacity(0.3)
                             .mask(
                                 LinearGradient(
                                     gradient: Gradient(stops: [
                                         .init(color: .clear, location: 0.0),
                                         .init(color: .clear, location: 0.56),
-                                        .init(color: .black.opacity(0.1), location: 0.6),
-                                        .init(color: .black, location: 1.0)
+                                        .init(color: .black.opacity(0.3), location: 0.6)
                                     ]),
                                     startPoint: .top,
                                     endPoint: .bottom
