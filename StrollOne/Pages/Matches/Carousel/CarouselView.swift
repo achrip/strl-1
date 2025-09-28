@@ -11,9 +11,10 @@ struct CarouselView: View {
     
     @StateObject var vm: CarouselViewModel = .init()
     
+    let screen = UIScreen.main.bounds
     var body: some View {
         ScrollView(.horizontal) {
-            HStack {
+            HStack(spacing: screen.width * 0.01) {
                 ForEach(vm.recentMoves, id: \.id) { card in
                     makeCard(card)
                 }
@@ -29,7 +30,7 @@ struct CarouselView: View {
 extension CarouselView {
     @ViewBuilder
     func makeCard(_ card: YourTurnCard) -> some View {
-        let screen = UIScreen.main.bounds
+        let font = UIFont.proximaNova(forTextStyle: .caption1)
         ZStack {
             Image(card.image)
                 .resizable(resizingMode: .stretch)
@@ -44,15 +45,17 @@ extension CarouselView {
                 
                 Spacer()
                 Text("\(card.sender.name), \(card.sender.age)")
+                    .font(.proximaNova(forTextStyle: .callout, weight: .bold))
                     .foregroundStyle(Color.white)
-                    .fontWeight(.bold)
                 
                 Text(card.caption)
-                    .font(.caption2)
+                    .font(.proximaNova(forTextStyle: .caption1))
                     .foregroundStyle(Color("YourTurnCardCaption"))
                     .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 1)
+                    .lineLimit(3)
+                    .minimumScaleFactor(0.5)
+                    .frame(maxWidth: screen.width * 0.29)
+                    .offset(y: font.pointSize * 0.5)
             }
             .padding()
         }
@@ -69,8 +72,7 @@ extension CarouselView {
                 .background(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
             
             Text("Tap to answer")
-                .font(.caption2)
-                .fontWeight(.bold)
+                .font(.proximaNova(forTextStyle: .caption1, weight: .bold))
                 .foregroundStyle(Color("YourTurnCardCaption"))
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -78,16 +80,15 @@ extension CarouselView {
     
     @ViewBuilder
     func makeNotification(for notice: NoticeType) -> some View {
-        ZStack {
             HStack {
                 Text("\(notice.icon) \(notice.description)")
-                    .font(.custom("Poppins-Medium", size: 9))
+                    .font(.proximaNova(forTextStyle: .caption2, weight: .semibold))
                     .padding(.vertical, 4)
+                    .padding(.horizontal, 7)
             }
-            .frame(maxWidth: .infinity)
             .background(Color(.systemBackground))
             .clipShape(Capsule())
-        }
+            .frame(maxWidth: .infinity, alignment: .center)
     }
 }
 
