@@ -19,10 +19,12 @@ struct CarouselView: View {
                     makeCard(card)
                 }
             }
+            .padding(.horizontal)
+            .scrollTargetLayout()
         }
+        .scrollTargetBehavior(.viewAligned)
         .scrollIndicators(.hidden)
-        .frame(height: UIScreen.main.bounds.height * 0.26)
-        .padding(.horizontal)
+        .frame(maxHeight: UIScreen.main.bounds.height * 0.26)
         .padding(.bottom, 3)
     }
 }
@@ -34,7 +36,7 @@ extension CarouselView {
         ZStack {
             Image(card.image)
                 .resizable(resizingMode: .stretch)
-                .blur(radius: card.isHidden ? 50 : 0)
+                .blur(radius: card.isHidden ? 20 : 0)
             
             if card.isHidden { makeScreen() }
             
@@ -69,7 +71,17 @@ extension CarouselView {
         ZStack {
             Rectangle()
                 .foregroundStyle(Color.clear)
-                .background(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
+                .background(
+                    LinearGradient(
+                        gradient: Gradient(stops: [
+                            .init(color: .clear, location: 0.0),
+                            .init(color: Color("CardScreen").opacity(0.8044), location: 0.66),
+                            .init(color: Color("CardScreen").opacity(1.0), location: 1.0)
+                        ]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
             
             Text("Tap to answer")
                 .font(.proximaNova(forTextStyle: .caption1, weight: .bold))

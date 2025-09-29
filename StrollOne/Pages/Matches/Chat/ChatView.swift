@@ -24,6 +24,7 @@ struct ChatView: View {
             .scrollContentBackground(.hidden)
             .background(.clear)
             .environment(\.defaultMinListRowHeight, 0)
+            .padding(.top, 6)
             .padding(.horizontal, 6)
         }
     }
@@ -118,7 +119,7 @@ extension ChatView {
                 
                 if chat.isStarred {
                     makeFavoriteNotificationBadge()
-                } else if chat.unreadMessagesCount > 0 {
+                } else if chat.unreadMessagesCount > 1 {
                     makeChatNotificationBadge(with: chat.unreadMessagesCount)
                 }
                 
@@ -143,7 +144,7 @@ extension ChatView {
                                         .init(color: .clear, location: 0.0),
                                         .init(color: .clear, location: 0.56),
                                         .init(color: .black.opacity(0.3), location: 0.6),
-                                        .init(color: .black, location: 1.0),
+                                        .init(color: .black, location: 1.0)
                                     ]),
                                     startPoint: .top,
                                     endPoint: .bottom
