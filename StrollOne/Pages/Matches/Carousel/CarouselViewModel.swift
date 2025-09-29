@@ -12,11 +12,11 @@ internal class CarouselViewModel: ObservableObject {
     init() {
         self.recentMoves = [
             .init(sender: User(name: "Amanda", age: 22),
-                  caption: "What is your favorite childhood memory?",
+                  caption: "What is your most favorite childhood memory?",
                  isHidden: true,
                   notice: .none,
                   image: "Amanda"),
-            .init(sender: User(name: "Malte", age: 22),
+            .init(sender: User(name: "Malte", age: 31),
                   caption: "What is the most important quality in friendships to you?",
                  isHidden: true,
                   notice: .announcement,
